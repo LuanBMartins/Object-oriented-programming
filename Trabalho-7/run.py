@@ -28,7 +28,7 @@ class Historico:
     def getHistorico(self):
         return self.__disciplinas
 
-    #Adiciona uma instacia de Disciplina Para a lista de disciplinas
+    #Adiciona uma instancia de Disciplina Para a lista de disciplinas
     def addDisciplina(self, codigo, nome, cargaHoraria):
         disc = Disciplina(codigo, nome, cargaHoraria)
         self.__disciplinas.append(disc)
@@ -84,7 +84,7 @@ class Grade:
     def getDisciplina(self):
         return self.__disciplinas
 
-    #Adiciona uma instacia de Disciplina Para a lista de disciplinas
+    #Adiciona uma instancia de Disciplina Para a lista de disciplinas
     def addDisciplina(self, codigo, nome, cargaHoraria):
         disci = Disciplina(codigo, nome, cargaHoraria, self)
         self.__disciplinas.append(disci)
@@ -113,7 +113,7 @@ Historico1.addDisciplina(2 , 'POO', 64)
 Historico1.addDisciplina(3 , 'COM112', 82)
 Historico1.addDisciplina(4 , 'Introducao a fisica', 64)
 
-#Cria o aluno e adiociona disciplinar a seu historico
+#Cria o aluno e adiociona disciplinas a seu historico
 Aluno2 = Aluno(22, 'joao', Curso2)
 Historico2 = Historico(Aluno2)
 Historico2.addDisciplina(1 , 'Introducao a fisica', 64)
@@ -167,6 +167,7 @@ for histor in Historico2.getHistorico():
 
 print(f'Total carga horaria obrigatoria cursada: {CargaObrigatoria}')
 print(f'Total carga horaria optativa cursada: {cargaOPtativa}')
+
 
 
 
