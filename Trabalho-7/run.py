@@ -1,6 +1,6 @@
 def getCargaHorariaOB(aluno, historico, grade1, grade2):
     cargaHoraria = 0
-    #encontrando a grade do curso que o aluno não cursou
+    #encontrando a grade do curso do aluno
     if aluno.getCurso() == grade1.getCurso():
         for disc in historico.getHistorico():
             #encontrando as disciplinas que ele já curso da grade
@@ -8,7 +8,7 @@ def getCargaHorariaOB(aluno, historico, grade1, grade2):
                 if disc.getNomeDisciplina() == grad.getNomeDisciplina():
                     cargaHoraria += disc.getCargaHoraria()
 
-    #encontrando a grade do curso que o aluno não cursou
+    #encontrando a grade do curso do aluno
     elif aluno.getCurso() == grade2.getCurso():
         for disc in historico.getHistorico():
             #encontrando as disciplinas que ele já curso da grade
@@ -20,7 +20,7 @@ def getCargaHorariaOB(aluno, historico, grade1, grade2):
 
 def getCargaHorariaOP(aluno, historico, grade1, grade2):
     cargaHoraria = 0
-    #encontrando a grade do curso do aluno
+    #encontrando a grade do curso que o aluno não esta matriculado
     if aluno.getCurso() != grade1.getCurso():
         for disc in historico.getHistorico():
             #encontrando as disciplinas que ele já curso da grade
@@ -28,7 +28,7 @@ def getCargaHorariaOP(aluno, historico, grade1, grade2):
                 if disc.getNomeDisciplina() == grad.getNomeDisciplina():
                     cargaHoraria += disc.getCargaHoraria()
     
-    #encontrando a grade do curso do aluno
+    #encontrando a grade do curso que o aluno não esta matriculado
     elif aluno.getCurso() != grade2.getCurso():
         for disc in historico.getHistorico():
             #encontrando as disciplinas que ele já curso da grade
