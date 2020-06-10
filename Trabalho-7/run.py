@@ -1,3 +1,43 @@
+def getCargaHorariaOB(aluno, historico, grade1, grade2):
+    cargaHoraria = 0
+    #encontrando a grade do curso que o aluno não cursou
+    if aluno.getCurso() == grade1.getCurso():
+        for disc in historico.getHistorico():
+            #encontrando as disciplinas que ele já curso da grade
+            for grad in grade1.getDisciplina():
+                if disc.getNomeDisciplina() == grad.getNomeDisciplina():
+                    cargaHoraria += disc.getCargaHoraria()
+
+    #encontrando a grade do curso que o aluno não cursou
+    elif aluno.getCurso() == grade2.getCurso():
+        for disc in historico.getHistorico():
+            #encontrando as disciplinas que ele já curso da grade
+            for grad in grade2.getDisciplina():
+                if disc.getNomeDisciplina() == grad.getNomeDisciplina():
+                    cargaHoraria += disc.getCargaHoraria()
+    
+    return cargaHoraria
+
+def getCargaHorariaOP(aluno, historico, grade1, grade2):
+    cargaHoraria = 0
+    #encontrando a grade do curso do aluno
+    if aluno.getCurso() != grade1.getCurso():
+        for disc in historico.getHistorico():
+            #encontrando as disciplinas que ele já curso da grade
+            for grad in grade1.getDisciplina():
+                if disc.getNomeDisciplina() == grad.getNomeDisciplina():
+                    cargaHoraria += disc.getCargaHoraria()
+    
+    #encontrando a grade do curso do aluno
+    elif aluno.getCurso() != grade2.getCurso():
+        for disc in historico.getHistorico():
+            #encontrando as disciplinas que ele já curso da grade
+            for grad in grade2.getDisciplina():
+                if disc.getNomeDisciplina() == grad.getNomeDisciplina():
+                    cargaHoraria += disc.getCargaHoraria()
+    
+    return cargaHoraria
+
 
 class Aluno:
 
@@ -124,49 +164,28 @@ Historico2.addDisciplina(3 , 'COM112', 82)
 print(f'Aluno: {Aluno1.getNome()}')
 print(f'Matricula: {Aluno1.getnroMatric()}')
 print('-- Historico --')
+
 #Percore o historico
-CargaObrigatoria = 0
-cargaOPtativa = 0
 for histor in Historico1.getHistorico():
     
     print(f'Codigo: {histor.getCodigo()},  Disciplina: {histor.getNomeDisciplina()}, Carga horaria: {histor.getCargaHoraria()}')
-   
-    #Percorrendo a lista de disciplinas da grade1, e comparando com a disciplina da lista atual
-    for i  in grade1.getDisciplina():
-        if histor.getNomeDisciplina() == i.getNomeDisciplina():
-            CargaObrigatoria += i.getCargaHoraria()
-    #Percorrendo a lista de disciplinas da grade2, e comparando com a disciplina da lista atual
-    for j in grade2.getDisciplina():
-        if histor.getNomeDisciplina() == j.getNomeDisciplina():
-            cargaOPtativa += j.getCargaHoraria()
 
-print(f'Total carga horaria obrigatoria cursada: {CargaObrigatoria}')
-print(f'Total carga horaria optativa cursada: {cargaOPtativa}')
-
+print(f'Total Carga Horaria Obrigatória cursada: {getCargaHorariaOB(Aluno1, Historico1, grade1, grade2)}')
+print(f'Total Carga Horaria Optativa cursada: {getCargaHorariaOP(Aluno1, Historico1, grade1, grade2)}')    
 print()
 
 #Dados Aluno2
 print(f'Aluno: {Aluno2.getNome()}')
 print(f'Matricula: {Aluno2.getnroMatric()}')
 print('-- Historico --')
+
 #Percore o historico
-CargaObrigatoria = 0
-cargaOPtativa = 0
 for histor in Historico2.getHistorico():
     
     print(f'Codigo: {histor.getCodigo()},  Disciplina: {histor.getNomeDisciplina()}, Carga horaria: {histor.getCargaHoraria()}')
     
-    #Percorrendo a lista de disciplinas da grade2, e comparando com a disciplina da lista atual
-    for j in grade2.getDisciplina():
-        if histor.getNomeDisciplina() == j.getNomeDisciplina():
-            CargaObrigatoria += j.getCargaHoraria()
-    #Percorrendo a lista de disciplinas da grade1, e comparando com a disciplina da lista atual
-    for i  in grade1.getDisciplina():
-        if histor.getNomeDisciplina() == i.getNomeDisciplina():
-            cargaOPtativa += i.getCargaHoraria()
-
-print(f'Total carga horaria obrigatoria cursada: {CargaObrigatoria}')
-print(f'Total carga horaria optativa cursada: {cargaOPtativa}')
+print(f'Total Carga Horaria Obrigatória cursada: {getCargaHorariaOB(Aluno2, Historico2, grade1, grade2)}')
+print(f'Total Carga Horaria Optativa cursada: {getCargaHorariaOP(Aluno2, Historico2, grade1, grade2)}')  
 
 
 
