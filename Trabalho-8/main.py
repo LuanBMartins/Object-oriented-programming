@@ -51,11 +51,13 @@ class Professor(Pessoa):
         return self.__titulacao
 
     def printDescricao(self):
+        print('-- Professor cadastrado --')
         print(f'Nome: {self.getNome()}')
         print(f'Endereço: {self.getEndereco()}')
         print(f'Idade: {self.getIdade()}')
         print(f'CPF: {self.getCPF()}')
         print(f'Titulação: {self.__titulacao}')
+        print()
 
 class Aluno(Pessoa):
 
@@ -67,11 +69,13 @@ class Aluno(Pessoa):
         return self.__curso
 
     def printDescricao(self):
+        print('-- Aluno cadastrado --')
         print(f'Nome: {self.getNome()}')
         print(f'Endereço: {self.getEndereco()}')
         print(f'Idade: {self.getIdade()}')
         print(f'CPF: {self.getCPF()}')
         print(f'Curso: {self.__curso}')
+        print()
 
 Alunos = [
     ('Luan', 'Maria da fe', 21, '13862', 'SIN'),
@@ -90,8 +94,8 @@ Professores = [
 
 cadastroAluno = {}
 cadastroProfessor = {}
-print('Cadastro aluno')
 
+print('Cadastro de alunos \n') 
 for nome, end, idade, cpf, curso in Alunos:
     try:
         if curso != 'SIN' and curso != 'CCO':
@@ -104,19 +108,20 @@ for nome, end, idade, cpf, curso in Alunos:
             raise cpfDuplicado()
 
     except cursoInvalido:
-        print(f'Curso {curso} não permitido!')
+        print(f'Erro de cadastro: Curso {curso} não permitido!\n')
     
     except idadeAlunoInvalida:
-        print(f'Idade {idade} não permitida!')
+        print(f'Erro de cadastro: Idade {idade} não permitida!\n')
 
     except cpfDuplicado:
-        print(f'CPF {cpf} já existe!')
+        print(f'Erro de cadastro: CPF {cpf} já existe!\n')
 
     else:
         cadastroAluno[cpf] = Aluno(nome, end, idade, cpf, curso)
+        cadastroAluno[cpf].printDescricao()
 
 print()
-print('Cadastro Professor')
+print('Cadastro de Professores \n') 
 for nome, end, idade, cpf, titulo in Professores:
     try:
         if titulo != 'doutor':
@@ -129,27 +134,15 @@ for nome, end, idade, cpf, titulo in Professores:
             raise cpfDuplicado()
 
     except titulacaoInvalida:
-        print(f'Titulo {titulo} não permitido!')
+        print(f'Erro de cadastro: Titulo {titulo} não permitido!\n')
     
     except IdadeProfessorInvalida:
-        print(f'Idade {idade} não permitida!')
+        print(f'Erro de cadastro: Idade {idade} não permitida!\n')
 
     except cpfDuplicado:
-        print(f'CPF {cpf} já existe!')
+        print(f'Erro de cadastro: CPF {cpf} já existe!\n')
 
     else:
         cadastroProfessor[cpf] = Professor(nome, end, idade, cpf, titulo)
+        cadastroProfessor[cpf].printDescricao()
 
-print()
-print('Alunos cadastrados!')
-for chave in cadastroAluno:
-    aluno = cadastroAluno.get(chave)
-    aluno.printDescricao()
-    print('----------------------------')
-
-print()
-print('Professores cadastrados!')
-for chave in cadastroProfessor:
-    prof = cadastroProfessor.get(chave)
-    prof.printDescricao()
-    print('----------------------------')
